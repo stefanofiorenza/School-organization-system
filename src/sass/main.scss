@@ -1,4 +1,19 @@
 @import 'common';
+.center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.margin10 {
+    margin: 10px;
+}
 
 // injector
 // endinjector

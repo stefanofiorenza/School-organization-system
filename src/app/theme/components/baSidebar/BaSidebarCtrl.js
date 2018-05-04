@@ -10,7 +10,7 @@
 
   /** @ngInject */
   function BaSidebarCtrl($scope, baSidebarService) {
-
+    //item相对应的内容
     $scope.menuItems = baSidebarService.getMenuItems();
     $scope.defaultSidebarState = $scope.menuItems[0].stateRef;
 

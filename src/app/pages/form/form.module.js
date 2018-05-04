@@ -9,44 +9,44 @@
       .config(routeConfig);
 
   /** @ngInject */
-  function routeConfig($stateProvider) {
+  function routeConfig($stateProvider,baSidebarServiceProvider) {
     $stateProvider
         .state('form', {
           url: '/form',
           template : '<ui-view autoscroll="true" autoscroll-body-top></ui-view>',
           abstract: true,
-          title: 'Form Elements',
+          controller: 'FormPageCtrl',
+          title: '用户管理',
           sidebarMeta: {
             icon: 'ion-compose',
             order: 250,
           },
         })
-        .state('form.inputs', {
-          url: '/inputs',
-          templateUrl: 'app/pages/form/inputs/inputs.html',
-          title: 'Form Inputs',
+        .state('form.students', {
+          url: '/students',
+          templateUrl: 'app/pages/form/students/students.html',
+          // resolve:{
+          //   deps:['$ocLazyLoad',
+          //       function($ocLazyLoad){
+          //         return $ocLazyLoad.load('students/students.list.js');
+          //       }
+          //     ]
+          // },
+          title: '学生用户管理',
           sidebarMeta: {
-            order: 0,
+            icon: 'ion-compose',
+            order: 100,
           },
         })
-        .state('form.layouts', {
-          url: '/layouts',
-          templateUrl: 'app/pages/form/layouts/layouts.html',
-          title: 'Form Layouts',
+        .state('form.teachers', {
+          url: '/teachers',
+          templateUrl: 'app/pages/form/teachers/teachers.html',
+          title: '老师用户管理',
           sidebarMeta: {
             order: 100,
           },
         })
-        .state('form.wizard',
-        {
-          url: '/wizard',
-          templateUrl: 'app/pages/form/wizard/wizard.html',
-          controller: 'WizardCtrl',
-          controllerAs: 'vm',
-          title: 'Form Wizard',
-          sidebarMeta: {
-            order: 200,
-          },
-        });
   }
 })();
+
+

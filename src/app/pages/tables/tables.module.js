@@ -16,27 +16,32 @@
           template : '<ui-view  autoscroll="true" autoscroll-body-top></ui-view>',
           abstract: true,
           controller: 'TablesPageCtrl',
-          title: 'Tables',
+          title: '用户管理',
           sidebarMeta: {
             icon: 'ion-grid',
             order: 300,
           },
-        }).state('tables.basic', {
-          url: '/basic',
-          templateUrl: 'app/pages/tables/basic/tables.html',
-          title: 'Basic Tables',
+        }).state('tables.students', {
+          url: '/students',
+          templateUrl: 'app/pages/tables/students/students.html',
+          title: '学生用户管理',
           sidebarMeta: {
             order: 0,
           },
-        }).state('tables.smart', {
-          url: '/smart',
-          templateUrl: 'app/pages/tables/smart/tables.html',
-          title: 'Smart Tables',
+        }).state('tables.studentsCreate', {
+          url: '/studentCreate',
+          templateUrl: 'app/pages/tables/students/studentsCreate.html',
+          title: '添加学生用户',
+          
+        }).state('tables.teachers', {
+          url: '/teachers',
+          templateUrl: 'app/pages/tables/teachers/teachers.html',
+          title: '老师用户管理',
           sidebarMeta: {
             order: 100,
           },
         });
-    $urlRouterProvider.when('/tables','/tables/basic');
+    $urlRouterProvider.when('/tables','/tables/students');
   }
 
 })();
