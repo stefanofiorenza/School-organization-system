@@ -1,0 +1,54 @@
+<div class="horizontal-scroll">
+    <div class="form-group select-page-size-wrap ">
+        <button type="button" class="btn btn-primary btn-with-icon" style="margin-left: 10px;margin-top:10px;" ng-click="teacherCreate()">新建</button>
+    </div>
+    <table class="table" st-table="smartTableData">
+        <thead>
+            <tr class="sortable ">
+                <th class="table-id" st-sort="number" st-sort-default="true">编号</th>
+                <th st-sort="group">调研组</th>
+                <th st-sort="role">老师角色</th>
+                <th st-sort="scale">老师级别</th>
+                <th st-sort="name">姓名</th>
+                <th st-sort="cardId">身份证号</th>
+                <th st-sort="card">App账号</th>
+                <th st-sort="password">App密码</th>
+                <th st-sort="tel">联系方式</th>
+                <th st-sort="status">状态</th>
+                <th st-sort="submit">操作</th>
+            </tr>
+            <!-- <tr>
+                    <th></th>
+                    <th><input st-search="firstName" placeholder="Search First Name" class="input-sm form-control search-input" type="search" /></th>
+                    <th><input st-search="lastName" placeholder="Search Last Name" class="input-sm form-control search-input" type="search" /></th>
+                    <th><input st-search="username" placeholder="Search Username" class="input-sm form-control search-input" type="search" /></th>
+                    <th><input st-search="email" placeholder="Search Email" class="input-sm form-control search-input" type="search" />
+                    </th>
+                    <th><input st-search="age" placeholder="Search Age" class="input-sm form-control search-input" type="search" />
+                    </th>
+                </tr> -->
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in smartTableData">
+                <td class="table-id">{{$index+1}}</td>
+                <td>{{item.firstName}}</td>
+                <td>{{item.lastName}}</td>
+                <td>{{item.username}}</td>
+                <td>{{item.username}}</td>
+                <td>{{item.lastName}}</td>
+                <td>{{item.lastName}}</td>
+                <td>{{item.username}}</td>
+                <td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>
+                <td>{{item.age}}</td>
+                <td><a class="emial-link" style="cursor: pointer;" ng-click="teacherEdit()">老师用户细节</a></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="12" class="text-center">
+                    <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

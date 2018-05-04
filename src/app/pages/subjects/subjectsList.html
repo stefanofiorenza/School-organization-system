@@ -1,0 +1,49 @@
+<div class="horizontal-scroll">
+    <div class="form-group select-page-size-wrap ">
+        <!-- <label>Rows on page
+            <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+                    ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+            </select>
+          </label> -->
+        <button type="button" class="btn btn-primary btn-with-icon" style="margin-left: 10px;margin-top:10px;" ng-click='subjectsCreate();'>新建</button>
+    </div>
+    <table class="table" st-table="smartTableData">
+        <thead>
+            <tr class="sortable ">
+                <th class="table-id" st-sort="id" st-sort-default="true">编号</th>
+                <th st-sort="firstName">课程名称</th>
+                <th st-sort="lastName">课程描述</th>
+                <th st-sort="username">创建时间</th>
+                <th st-sort="username">课程状态</th>
+                <th st-sort="email">操作</th>
+            </tr>
+            <!-- <tr>
+                <th></th>
+                <th><input st-search="firstName" placeholder="Search First Name" class="input-sm form-control search-input" type="search" /></th>
+                <th><input st-search="lastName" placeholder="Search Last Name" class="input-sm form-control search-input" type="search" /></th>
+                <th><input st-search="username" placeholder="Search Username" class="input-sm form-control search-input" type="search" /></th>
+                <th><input st-search="email" placeholder="Search Email" class="input-sm form-control search-input" type="search" />
+                </th>
+                <th><input st-search="age" placeholder="Search Age" class="input-sm form-control search-input" type="search" />
+                </th>
+            </tr> -->
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in subjectsLists">
+                <td class="table-id">{{$index}}+1</td>
+                <td>{{item.couName}}</td>
+                <td>{{item.couDescribe}}</td>
+                <td>{{item.createDate}}</td>
+                <td>{{item.couStatus}}</td>
+                <td><a class="emial-link" style="cursor: pointer;" ng-click="subjectEdit()">查看课程细节</a></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="12" class="text-center">
+                    <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
