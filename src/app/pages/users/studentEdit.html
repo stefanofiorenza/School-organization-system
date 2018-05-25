@@ -1,0 +1,69 @@
+<div class="wrapper">
+    <div class="box-header with-border">
+        <span class="box-title">{{update}}学生用户</span>
+    </div>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <i class="ion-asterisk" style="color:red;"></i>
+            <label for="class">学生所属班级：</label>
+            <select type="text" class="form-control" ng-model="office" ng-options="office.name for office in offices" ng-required="true">
+                <option value="">请选择所属班级</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <i class="ion-asterisk" style="color:red;"></i>
+            <label for="cardId">学生身份证号/App账号：</label>
+            <input type="text" class="form-control" placeholder="cardId" ng-model="student.loginName" ng-required="true">
+        </div>
+        <div class="form-group">
+            <i class="ion-asterisk" style="color:red;"></i>
+            <label for="input01">学生姓名：</label>
+            <input type="text" class="form-control" placeholder="name" ng-model="student.name" ng-required="true">
+        </div>
+        <div class="form-group">
+            <i class="ion-asterisk" style="color:red;"></i>
+            <label for="sex">学生性别：</label>
+            <select type="text" class="form-control" ng-options="sex for sex in ['女','男']" ng-model='student.sex' ng-required="true">
+            </select>
+        </div>
+        <!-- <div class="form-group">
+            <i class="ion-asterisk" style="color:red;"></i>
+            <label for="scale">学生级别：</label>
+            <select type="text" class="form-control" ng-model="student.scale" ng-options="item for item in scale">
+                <options value=''>请选择</options>
+            </select>
+        </div> -->
+        <div class="form-group">
+            <i class="ion-asterisk" style="color:red;"></i>
+            <label for="tel">手机号：</label>
+            <input type="tel" class="form-control" placeholder="请输入手机号" ng-model="student.phone" ng-required="true">
+        </div>
+        <div class="form-group">
+            <i class="ion-asterisk" style="color:red;"></i>
+            <label for="password">登录App密码：</label>
+            <input type="text" placeholder="xiaochejiang" class="form-control" ng-model="student.password" placeholder="请输入密码" ng-required="true">
+        </div>
+        <div class="form-group">
+            <i class="ion-asterisk" style="color:red;"></i>
+            <label for="password">确认App密码：</label>
+            <input type="text" placeholder="xiaochejiang" class="form-control" placeholder="请再次输入密码" ng-model="student.againPassword"
+                ng-blur="validata()" ng-required="true">
+            <div ng-if='isStudentPassword' class="glyphicon glyphicon-exclamation-sign" style="color: #e24c4f;">两次密码输入不一致，请重新输入！</div>
+        </div>
+        <div class="form-group">
+            <i class="ion-asterisk" style="color:red;"></i>
+            <label for="email">邮箱地址：</label>
+            <input type="email" class="form-control" placeholder="请输入Email" ng-model="student.email" ng-required="true">
+        </div>
+        <div class="form-group">
+            <label for="message">备注信息：</label>
+            <textarea placeholder="请填空备注信息" class="form-control" ng-model="student.remarks"></textarea>
+        </div>
+        <footer class="center">
+            <button class="btn btn-danger margin10" ng-click='cancelStudentEdit()'>取消</button>
+            <button class="btn btn-danger margin10" ng-click='lock();' ng-show="isShow">锁定</button>
+            <button class="btn btn-danger margin10" ng-click='active();' ng-show="isShow">激活</button>
+            <button type="submit" class="btn btn-primary" ng-click="saveStudent()">保存</button>
+        </footer>
+    </form>
+</div>

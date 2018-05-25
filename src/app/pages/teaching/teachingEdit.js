@@ -3,133 +3,126 @@
  * created on 16.12.2015
  */
 (function () {
-    'use strict';
-  
-    angular.module('BlurAdmin.pages.teaching')
-        .controller('teachingEdit', teachingEdit);
-  
-    /** @ngInject */
-    function teachingEdit($scope,$state, $http,$stateParams,$filter, editableOptions, editableThemes) {
-      
-      // 取当前管理员信息
-      var obj = JSON.parse(sessionStorage.getItem('userMessage'));
-      var header = '?__cookie=true&__sid='+obj.JSESSIONID;
-      var type = {contentType:'application/json',dataType:'JSON'};
-      var url = '/a/course/';
+  'use strict';
 
-      // 当前记录的ID
-      var teaching_id = $stateParams.teaching_id;
-      // 判断1 ：添加 2：修改
-      var teaching_type = $stateParams.teaching_type;
-      // 教师调研组
-      $scope.groups = {};
-      $scope.group = '';
-      // 教师角色
-      $scope.roles = {};
-      $scope.role = '';
-      // 教师职称
-      $scope.titles = {};
-      $scope.title = '';
-     
+  angular.module('BlurAdmin.pages.teaching')
+    .controller('teachingPlanEdit', teachingPlanEdit);
+
+  /** @ngInject */
+  function teachingPlanEdit($scope, $state, $http, $stateParams, toDate, Http, $httpParamSerializerJQLike, $filter, editableOptions, editableThemes) {
+
+    // 取当前管理员信息
+    var obj = JSON.parse(sessionStorage.getItem('userMessage'));
+    var header = '?__cookie=true&__sid=' + obj.JSESSIONID;
+    // var type = {contentType:'application/json',dataType:'JSON'};
+    var url = '/a/course/';
+    // /a/course/teachingPlan/getList
+
+    // 当前记录的ID
+    var teaching_id = $stateParams.teaching_id;
+    // 判断1 ：添加 2：修改
+    var teaching_type = $stateParams.teaching_type;
+
+    $scope.isShow = false;
+
     //  初始化时，调用接口以及调用其它需要的数据 
-      $scope.initPage = function(){
+    $scope.initPage = function () {
 
-        $scope.groups = $scope.method('','GET');
-        $scope.roles = $scope.method('','GET');
-        $scope.titles = $scope.method('','GET');
-
-        if(teaching_type == 1){
-          $scope.teaching = {};
-        }else{
-          // 修改时需要加id          
-          $http.get(url+'/'+header + '&'+teaching_id)
-          .success(function(data){
-            $scope.teaching = data.body;
-            $scope.group = $scope.setSelect($scope.groups,$scope.teaching.group.id);
-            $scope.role = $scope.setSelect($scope.roles,$scope.teaching.roles.id);
-            $scope.title = $scope.setSelect($scope.titles,$scope.teaching.titles.id);
+      if (teaching_type == 1) {
+        $scope.teaching = {};
+        $scope.update = '添加';
+      } else {
+        // 修改时需要加id  
+        $scope.isShow = true;
+        $scope.update = '修改';
+        $http.get(url + 'teaching/get' + header + '&' + 'id=' + teaching_id)
+          .success(function (data) {
+            $scope.teaching = data.body.list;
+            $scope.teaching.plandateStart = toDate.timestampToTime($scope.teaching.plandateStart);
+            $scope.teaching.plandateEnd = toDate.timestampToTime($scope.teaching.plandateEnd);
           })
-          .error(function(data){
+          .error(function (data) {
             alert(data.msg);
           });
-        }
-      };
-// 下拉框中的默认内容
-      $scope.setSelect = function(selectType,id){
-        var newData;
-        var keepGoing = true;
-        angular.forEach(selectType,function(data){
-          if(keepGoing === true){
-            if(data.id == id){
-              newData = data;
-              keepGoing = false;
-            }
-          }else{
-            return newData;
-          }
-        })        
-      };
-
-      $scope.initPage();
-      //下拉框中内容的接口调用
-      $scope.method = function (methodurl,type,data){
-        var tmpdata = [];
-        $http({
-          method:type,
-          url:url+methodurl+header,
-          data:data
-        })
-        .success(function(data){
-           tmpdata = data;
-        })
-        .error(function(data){
-          alert(data.message);
-        })
-        return tmpdata;
-      };
-//   点击保存 
-      $scope.saveTeaching = function(){
-        var data = {};
-        data.teaching = $scope.teaching;
-        data = JSON.stringify(data);
-        if(teaching_type == 1){
-          // 添加          
-          $http({
-            method:'POST',
-            contentType:type.contentType,
-            url:url+'teachingPlan/save?'+header,
-            dataType:type.dataType,
-            data:data
-          })
-          .success(function(data){
-            alert('添加成功！');
-          })
-          .error(function(data){
-            alert(date.msg);
-          })
-        }else{
-          // 修改
-          $http({
-            method:'POST',
-            contentType:type.contentType,
-            url:url+'teachingPlan/save?'+header,
-            dataType:type.dataType,
-            data:data
-          })
-          .success(function(data){
-            alert('修改成功！');
-          })
-          .error(function(data){
-            alert(data.msg);
-          })
-        }       
-      };
-  
-// 取消修改/保存  
-      $scope.cancelTeachingEdit = function(){
-        $state.go('teaching.teaching');
       }
-//  (Object.keys($scope.student).length >= 9 && Object.keys($scope.student).indexOf("message") == -1) || (Object.keys($scope.student).length > 9 && Object.keys($scope.student).indexOf("message") != -1)
-    }
-  })();
-  
+    };
+
+
+    $scope.initPage();
+
+    //   点击保存 
+    $scope.saveTeaching = function () {
+      var data = {};
+
+      // $scope.teaching.plandateStart = $scope.teaching.plandateStart.to
+      data.teaching = $scope.teaching;
+      data.teaching.plandateStart = toDate.format(data.teaching.plandateStart, 'yyyy-MM-dd hh:mm:ss');
+      data.teaching.plandateEnd = toDate.format(data.teaching.plandateEnd, 'yyyy-MM-dd hh:mm:ss');
+
+
+
+      if (teaching_type == 1) {
+        // 添加  
+        var isSuccess = Http.POST('POST', url + 'teaching/insert' + header, data.teaching);
+
+        isSuccess.then(function (text) {
+          if (text.success == true) {
+            alert("添加授课计划成功！");
+            $scope.teaching = {};
+          } else {
+            alert('ERROR:' + text.redirectAttributes);
+          }
+        }).catch(function (status) {
+          alert('ERROR:' + status);
+        })
+      } else {
+        // 修改
+        data.teaching.id = teaching_id;
+        var isSuccess = Http.POST('POST', url + 'teaching/update' + header, data.teaching);
+
+        isSuccess.then(function (text) {
+          alert("修改授课计划成功！");
+        }).catch(function (status) {
+          alert('ERROR:' + status);
+        });
+      }
+    };
+
+    // 锁定
+    $scope.lock = function () {
+      // state 为0 是激活
+      var data = {};
+      data.id = teaching_id;
+      var isSuccess = Http.POST('POST', url + 'teachingPlan/locking' + header, data);
+
+      isSuccess.then(function (text) {
+        alert("锁定成功！");
+      }).catch(function (status) {
+        alert('ERROR:' + status);
+      });
+
+
+
+    };
+    // 激活
+    $scope.active = function () {
+      // state 为1 是锁定
+      var data = {};
+      data.id = teaching_id;
+      var isSuccess = Http.POST('POST', url + 'teachingPlan/activation' + header, data);
+
+      isSuccess.then(function (text) {
+        alert("激活成功！");
+      }).catch(function (status) {
+        alert('ERROR:' + status);
+      });
+
+    };
+
+    // 取消修改/保存  
+    $scope.cancelTeachingEdit = function () {
+      $state.go('teaching.teachingPlan');
+    };
+
+  }
+})();

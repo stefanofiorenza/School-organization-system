@@ -1,28 +1,26 @@
-/**
- * @author v.lugovsky
- * created on 16.12.2015
- */
-(function () {
-  'use strict';
+!
+function () {
+    "use strict";
 
-  angular.module('BlurAdmin.pages', [
-    'ui.router',
+    function routeConfig($urlRouterProvider, baSidebarServiceProvider) {
+        $urlRouterProvider.otherwise("/home")
+    }
+    angular.module("BlurAdmin.pages", ["ui.router",
+            'BlurAdmin.pages.home',
+            "BlurAdmin.pages.users",
+            "BlurAdmin.pages.device",
+            "BlurAdmin.pages.resource",
+            "BlurAdmin.pages.recode",
+            "BlurAdmin.pages.roles",
+            "BlurAdmin.pages.message",
+            "BlurAdmin.pages.system",
+            "BlurAdmin.pages.teaching",
+            "BlurAdmin.pages.tables",
+            // "BlurAdmin.pages.classTables",
+            // "BlurAdmin.pages.class",
+            // "BlurAdmin.pages.directory"
 
-    // 'BlurAdmin.pages.dashboard',
-    // 'BlurAdmin.pages.ui',
-    'BlurAdmin.pages.classTables',
-    'BlurAdmin.pages.students',
-    'BlurAdmin.pages.teachers',
-    'BlurAdmin.pages.subjects',
-    'BlurAdmin.pages.teaching',
-    'BlurAdmin.pages.directory',
-    'BlurAdmin.pages.class',
-  ])
-      .config(routeConfig);
 
-  /** @ngInject */
-  function routeConfig($urlRouterProvider, baSidebarServiceProvider) {
-    $urlRouterProvider.otherwise('/students');
-  }
-
-})();
+        ])
+        .config(routeConfig)
+}();

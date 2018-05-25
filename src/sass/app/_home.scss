@@ -1,0 +1,155 @@
+.home {
+    color: #ddd;
+    .row {
+        // margin: 13px 21px 0px 21px;
+        .pageList {
+            display: block;
+            .info-box {
+                padding-right: 5px;
+                .info-box-content {
+                    margin-left: 10px;
+                    padding: 0px;
+                    .title {
+                        display: inline-block;
+                        width: 80px;
+                        height: 30px;
+                        line-height: 20px;
+                        /* vertical-align: middle; */
+                        border: 1px #D4D2D7 solid;
+                        padding-top: 4px;
+                        margin-right: 6px;
+                        text-align: center;
+                    }
+                }
+                .info-box-icon {
+                    border-top-left-radius: 2px;
+                    border-top-right-radius: 0;
+                    border-bottom-right-radius: 0;
+                    border-bottom-left-radius: 2px;
+                    display: block;
+                    float: right;
+                    height: 30px;
+                    width: 30px;
+                    text-align: center;
+                    line-height: 60px;
+                    .img {
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+            }
+        }
+        .info-box {
+            display: block;
+            min-height: 60px;
+            width: 100%;
+            margin-bottom: 15px;
+            height: 60px;
+            line-height: 60px;
+            background: rgba(36, 50, 68, 1);
+            border-radius: 6px;
+            padding-right: 30px;
+            .info-box-icon {
+                border-top-left-radius: 2px;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 2px;
+                display: block;
+                float: right;
+                height: 30px;
+                width: 30px;
+                text-align: center; // font-size: 45px;
+                line-height: 60px;
+                .img {
+                    width: 30px;
+                    height: 30px;
+                }
+            }
+            .info-box-content {
+                display: inline-block;
+                font-size: 12px;
+                line-height: 20px;
+                vertical-align: middle;
+                margin-left: 30px;
+                .info-box-text {
+                    display: block;
+                    color: rgba(31, 157, 144, 1);
+                }
+                .info-box-number {
+                    display: block;
+                    color: rgba(185, 242, 161, 1);
+                }
+            }
+        }
+        .box {
+            background: rgba(36, 50, 68, 1);
+            border-radius: 6px;
+            position: relative;
+            margin-bottom: 20px;
+            width: 100%;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            &::after{
+                display:block;
+                clear:both;
+                content:"";
+                visibility:hidden;
+                height:0;
+            }
+            .box-header {
+                color: rgba(244, 244, 244, 1);
+                display: block;
+                padding: 10px;
+                position: relative;
+                .box-title {
+                    display: inline-block;
+                    font-size: 9px;
+                    margin: 0;
+                    line-height: 1;
+                }
+            }
+            .with-border {
+                border-bottom: 1px solid rgba(25, 37, 52, 1);
+                ;
+            }
+            .box-body {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 3px;
+                border-bottom-left-radius: 3px;
+                padding: 10px;
+                height: 100px;
+                line-height: 100px;
+                display: flex;
+                .box-content {
+                    display: inline-block;
+                    width: 80px;
+                    height: 80px;
+                    line-height: 20px;
+                    flex:1;
+                    text-align: center;
+                    .num {
+                        display: block;
+                        font-size: 20px;
+                        color: rgba(43, 138, 129, 1);
+                        line-height: 30px;
+                        font-weight: bold;
+                    }
+                    .text {
+                        display: block;
+                        font-size: 9px;
+                        color: rgba(244, 244, 244, 1);
+                    }
+                    .noStart{
+                        color:#B24C50;
+                    }
+                    .start{
+                        color:#779818;
+                    }
+                    .end{
+                        color:#2F88A6;
+                    }
+                }
+            }
+        }
+    }
+}

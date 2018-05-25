@@ -1,53 +1,96 @@
-<div class="horizontal-scroll">
-    <div class="form-group select-page-size-wrap ">
-        <!-- <label>Rows on page
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <i class="ion-ios-search-strong"></i>
+                    <span class="box-title">筛选查询</span>
+                </div>
+                <div class="box-body">
+                    <div class="box-content">
+                        <input type="date" class="col-md-4 col-sm-8 col-xs-12 select" ng-model="search.date" placeholder="查找年份">
+                        <input type="text" class="col-md-4 col-sm-8 col-xs-12 select" ng-model="search.name" placeholder="计划名称/计划关健字/班级">
+                        <button type="button" class="selectBtn" ng-click="getSearch()">查询</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <i class="ion-navicon"></i>
+                    <span class="box-title">数据列表</span>
+                    <button type="button" class="btn btn-primary btn-with-icon" style="margin-left: 20px;" ng-click='teachingCreate();'>新建</button>
+                </div>
+                <div class="box-body">
+                    <div class="box-content">
+                        <table class="table table-bordered table-hover table-condensed" st-table="smartTableData">
+                            <thead>
+                                <tr class="sortable">
+                                    <th class="table-id" st-sort="id" st-sort-default="true">序号</th>
+                                    <th st-sort="year">计划年份</th>
+                                    <th st-sort="name">计划名称</th>
+                                    <th st-sort="date">计划周期</th>
+                                    <th st-sort="primaryPerson">计划负责人</th>
+                                    <th st-sort="phone">负责人电话</th>
+                                    <th st-sort="email">负责人邮箱</th>
+                                    <th st-sort="status">计划状态</th>
+                                    <th st-sort="edit">操作</th>
+                                </tr>
+                                <!-- <tr>
+                                            <th></th>
+                                            <th><input st-search="firstName" placeholder="Search First Name" class="input-sm form-control search-input" type="search" /></th>
+                                            <th><input st-search="lastName" placeholder="Search Last Name" class="input-sm form-control search-input" type="search" /></th>
+                                            <th><input st-search="username" placeholder="Search Username" class="input-sm form-control search-input" type="search" /></th>
+                                            <th><input st-search="email" placeholder="Search Email" class="input-sm form-control search-input" type="search" />
+                                            </th>
+                                            <th><input st-search="age" placeholder="Search Age" class="input-sm form-control search-input" type="search" />
+                                            </th>
+                                        </tr> -->
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in teachings">
+                                    <td class="table-id">{{$index+1}}</td>
+                                    <td>{{item.timeName}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>
+                                        <span ng-show="item.plandateStart">开始：{{item.plandateStart}}</span>
+                                        <span ng-show="item.plandateEnd">结束：{{item.plandateEnd}}</span>
+
+                                    </td>
+                                    <td>{{item.primaryPerson}}</td>
+                                    <td>{{item.phone}}</td>
+                                    <td>
+                                        <a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a>
+                                    </td>
+                                    <td e-ng-options="s.value as s.text for s in statuses">{{ showStatus(item) }}</td>
+                                    <td>
+                                        <a class="emial-link" style="cursor: pointer;" ng-click="teachingEdit(item.id)">查看授课计划细节</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <!-- <tfoot>
+                                        <tr>
+                                            <td colspan="6" class="text-center">
+                                                <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+                                            </td>
+                                        </tr>
+                                    </tfoot> -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="form-group select-page-size-wrap ">
+         <label>Rows on page
                 <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
                         ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
                 </select>
-              </label> -->
-        <button type="button" class="btn btn-primary btn-with-icon" style="margin-left: 10px;margin-top:10px;" ng-click='teachingCreate();'>新建</button>
-    </div>
-    <table class="table" st-table="smartTableData">
-        <thead>
-            <tr class="sortable ">
-                <th class="table-id" st-sort="id" st-sort-default="true">序号</th>
-                <th st-sort="name">授课名称</th>
-                <th st-sort="primaryPerson">授课负责人</th>
-                <th st-sort="phone">联系方式</th>
-                <th st-sort="email">邮箱</th>
-                <th st-sort="plandateStart">授课开始时间</th>
-                <th st-sort="plandateEnd">授课结束时间</th>
-                <th st-sort="edit">操作</th>
-            </tr>
-            <!-- <tr>
-                <th></th>
-                <th><input st-search="firstName" placeholder="Search First Name" class="input-sm form-control search-input" type="search" /></th>
-                <th><input st-search="lastName" placeholder="Search Last Name" class="input-sm form-control search-input" type="search" /></th>
-                <th><input st-search="username" placeholder="Search Username" class="input-sm form-control search-input" type="search" /></th>
-                <th><input st-search="email" placeholder="Search Email" class="input-sm form-control search-input" type="search" />
-                </th>
-                <th><input st-search="age" placeholder="Search Age" class="input-sm form-control search-input" type="search" />
-                </th>
-            </tr> -->
-        </thead>
-        <tbody>
-            <tr ng-repeat="item in teachings">
-                <td class="table-id">{{$index+1}}</td>
-                <td>{{item.name}}</td>
-                <td>{{item.primaryPerson}}</td>
-                <td>{{item.phone}}</td>
-                <td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>
-                <td>{{item.plandateStart}}</td>
-                <td>{{item.plandateEnd}}</td>
-                <td><a class="emial-link" style="cursor: pointer;" ng-click="teachingEdit()">查看授课计划细节</a></td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="6" class="text-center">
-                    <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
-                </td>
-            </tr>
-        </tfoot>
-    </table>
+              </label> 
+        
+    </div> -->
+
 </div>

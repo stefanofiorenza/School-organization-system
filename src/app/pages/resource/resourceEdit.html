@@ -1,0 +1,21 @@
+<div class="wrapper">
+    <div class="box-header with-border">
+        <span class="box-title">{{update}}课程用户</span>
+    </div>
+    <form class="form-horizontal">       
+        <div class="form-group">
+            <i class="ion-asterisk" style="color:red;"></i>
+            <label for="input01">课程名称：</label>
+            <input type="text" class="form-control" placeholder="name" ng-model="course.name " ng-required="true">
+        </div>
+        
+        <div class="form-group">
+            <label for="message">课程描述：</label>
+            <textarea placeholder="请填空备注信息" class="form-control" ng-model="course.outline"></textarea>
+        </div>
+        <footer class="center">
+            <button class="btn btn-danger margin10" ng-click='cancelEdit()'>取消</button>
+            <button type="submit" class="btn btn-primary" ng-click="save()">保存</button>
+        </footer>
+    </form>
+</div>

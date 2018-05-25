@@ -10,13 +10,25 @@
   <div class="user-profile clearfix">
     <div class="al-user-profile" uib-dropdown>
       <a uib-dropdown-toggle class="profile-toggle-link">
-        <img ng-src="{{::( 'Nasta' | profilePicture )}}">
+        <img ng-src={{user.photo}}>
       </a>
       <ul  class="top-dropdown-menu profile-dropdown" uib-dropdown-menu>
-        <li><i class="dropdown-arr"></i></li>
-        <li><a href="#/profile"><i class="fa fa-user"></i>Profile</a></li>
-        <li><a href><i class="fa fa-cog"></i>Settings</a></li>
-        <li><a href class="signout"><i class="fa fa-power-off"></i>Sign out</a></li>
+        <li class="user-header">
+            <img ng-src={{user.photo}} class="img-circle" alt="User Image">
+            <p>Admin
+              <small>B本</small>
+            </p>
+        </li>
+        <li class="user-body">
+          <div class="margin10 "><span class="user-body-left">单位</span><span class="user-body-right">{{user.postName}}</span></div>
+          <div class="margin10 "><span class="user-body-left">职位</span><span class="user-body-right">{{user.roleName}}</span></div>
+          <div class="margin10 "><span class="user-body-left">手机号</span><span class="user-body-right">{{user.phone}}</span></div>
+          <div class="margin10 "><span class="user-body-left">身份证号</span><span class="user-body-right">{{user.idNum}}</span></div>
+        </li>
+      <!-- <li><a href><i class="fa fa-cog"></i>Settings</a></li> -->
+        <li class="user-footer">
+          <a href class="signout center" ng-click="logout()"><i class="fa fa-power-off"></i>注销</a>
+        </li>
       </ul>
     </div>
     <msg-center></msg-center>

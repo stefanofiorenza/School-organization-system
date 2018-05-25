@@ -1,0 +1,75 @@
+<div class="horizontal-scroll">
+    <div ba-panel ba-panel-title="课程目录" ba-panel-class="with-scroll tree-panel">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="control-side text-center">
+                    <div>
+                        <button class="btn btn-primary" ng-click="addNewNode()">添加</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" ng-click="addNewNodeSub()">添加课程</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" data-toggle="modal" ng-click="open('app/theme/modals/infoModal.html')">编辑</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" ng-click="delete()">删除</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" ng-click="collapse()">全部折叠</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" ng-click="expand()">全部打开</button>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary" ng-click="getCourse()">查询课程</button>
+                    </div>
+                    <!-- <div>
+                        <button class="btn btn-primary" ng-click="refresh()">重置</button>
+                    </div> -->
+                </div>
+            </div>
+            <div class="col-sm-8">
+                <div js-tree="basicConfig" ng-model="treeData" should-apply="applyModelChanges()" tree="basicTree" tree-events="ready:readyCB"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group select-page-size-wrap ">
+    <!-- <label>Rows on page
+                    <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+                            ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+                    </select>
+                  </label> -->
+    <!-- <button type="button" class="btn btn-primary btn-with-icon" style="margin-left: 10px;margin-top:10px;" ng-click='directoryCreate();'>新建</button> -->
+</div>
+<table class="table" st-table="smartTableData">
+    <thead>
+        <tr class="sortable ">
+            <th class="table-id" st-sort="id" st-sort-default="true">序号</th>
+            <th st-sort="name">课程名称</th>
+            <th st-sort="primaryPerson">课程描述</th>
+            <th st-sort="plandateStart">创建时间</th>
+            <th st-sort="edit">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in courses">
+            <td class="table-id">{{$index+1}}</td>
+            <td>{{item.name }}</td>
+            <td>{{item.outline}}</td>
+            <td>{{item.createDate}}</td>
+            <td>
+                <a class="emial-link" style="cursor: pointer;" ng-click="courseEdit(item.id)">查看课程细节</a>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="6" class="text-center">
+                <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+</div>

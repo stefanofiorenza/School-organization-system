@@ -9,7 +9,7 @@
       .controller('TablesPageCtrl', TablesPageCtrl);
 
   /** @ngInject */
-  function TablesPageCtrl($scope,$state, $filter, editableOptions, editableThemes) {
+  function TablesPageCtrl($scope, $filter, editableOptions, editableThemes) {
 
     $scope.smartTablePageSize = 10;
 
@@ -703,10 +703,6 @@
       };
       $scope.users.push($scope.inserted);
     };
-
-    $scope.studentsCreate = function(){
-      $state.go('tables.studentsCreate')
-    }
 
     editableOptions.theme = 'bs3';
     editableThemes['bs3'].submitTpl = '<button type="submit" class="btn btn-primary btn-with-icon"><i class="ion-checkmark-round"></i></button>';

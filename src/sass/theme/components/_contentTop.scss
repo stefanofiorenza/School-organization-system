@@ -1,11 +1,45 @@
 .content-top {
   padding-top: 13px;
   padding-bottom: 27px;
+  .box {
+    background: rgba(36, 50, 68, 1);
+    border-radius: 6px;
+    padding: 8px;
+    margin-top: 20px;
+    .box-header {
+      border-bottom: 1px solid #424F60;
+      padding-bottom: 8px;
+      color: #fff;
+    }
+    .box-body {
+      padding: 8px 4px 4px 4px;
+      .select {
+        background: rgba(16, 22, 30, 1);
+        opacity: 0.2;
+        border-radius: 4px;
+        border: none;
+        margin-right: 14px;
+        height: 20px;
+        line-height: 20px;
+        color: #fff;
+      }
+      .selectBtn {
+        width: 60px;
+        /* height: 34px; */
+        background: rgba(31, 157, 144, 1);
+        border-radius: 4px;
+        color: #fff;
+        border: none;
+        height: 20px;
+        line-height: 20px;
+      }
+    }
+  }
 }
 
 h1.al-title {
   font-weight: $font-bold;
-  color: $default-text;
+  color: #fff;
   float: left;
   width: auto;
   margin: 0;
@@ -17,7 +51,7 @@ h1.al-title {
 
 .al-breadcrumb {
   background: none;
-  color: $default-text;
+  color: #fff;
   padding: 0;
   margin: 0;
   float: right;
@@ -32,7 +66,7 @@ h1.al-title {
   float: right;
   margin-right: 10px;
   padding-top: 10px;
-  > a {
+  >a {
     font-size: 19px;
   }
 }

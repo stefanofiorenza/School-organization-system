@@ -7,10 +7,71 @@
   width: 100%;
   min-width: $resMin;
   padding: 0 32px 0 40px;
-
   &.scrolled {
     background-color: rgba(black, 0.85)
   }
+}
+
+.top-dropdown-menu.profile-dropdown {
+  width: 280px;
+  padding-top: 0px;
+  margin-top: 1px;
+  li.user-header {
+    height: 175px;
+    padding: 10px;
+    text-align: center;
+    background: #1c2b36;
+    img {
+      display: inline-block;
+      text-align: center;
+      z-index: 5;
+      height: 90px;
+      width: 90px;
+      border: 3px solid;
+      border-color: transparent;
+      border-color: rgba(255, 255, 255, 0.2);
+      vertical-align: middle;
+    }
+    p {
+      z-index: 5;
+      color: #fff;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 17px;
+      margin-top: 10px;
+      small {
+        display: block;
+        font-size: 12px;
+        padding: 5px 0px;
+      }
+    }
+  }
+  li.user-body {
+    padding: 15px;
+    font-size: 16px;
+    border-bottom: 1px solid #f4f4f4;
+    border-top: 1px solid #dddddd;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    .user-body-left {
+      width: 30%;
+      text-align: right;
+      margin-right: 8px;
+      display: inline-block;
+    }
+    .user-body-right {
+      width: 60%;
+      display: inline-block;
+    }
+  }
+  li.user-footer {
+    a {
+      text-align: center;
+    }
+  }
+}
+
+.img-circle {
+  border-radius: 50%;
 }
 
 a.al-logo {
@@ -22,7 +83,6 @@ a.al-logo {
   float: left;
   outline: none !important;
   line-height: 60px;
-
   span {
     color: $primary;
   }
@@ -62,7 +122,6 @@ a.refresh-data {
   float: right;
   margin-top: 13px;
   margin-right: 26px;
-
   &:hover {
     color: $warning !important;
   }
@@ -78,7 +137,6 @@ a.collapse-menu-link {
   padding: 0;
   float: left;
   margin: 11px 0 0 25px;
-
   &:hover {
     text-decoration: none;
     color: $warning;
@@ -89,7 +147,6 @@ a.collapse-menu-link {
   float: right;
   margin-top: 14px;
   margin-right: 26px;
-
   .tpl-skin-panel {
     max-height: 300px;
     overflow-y: scroll;
@@ -116,7 +173,6 @@ a.collapse-menu-link {
   width: 162px;
   float: left;
   margin: 20px 0 0 30px;
-
   label {
     cursor: pointer;
   }
@@ -152,7 +208,7 @@ a.collapse-menu-link {
 }
 
 @media (max-width: $resXXS) {
-  .user-profile{
+  .user-profile {
     min-width: 136px;
   }
   a.refresh-data {
@@ -161,12 +217,11 @@ a.collapse-menu-link {
   a.collapse-menu-link {
     margin-left: 10px;
   }
-
   .al-skin-dropdown {
     display: none;
   }
 }
 
-.profile-toggle-link{
+.profile-toggle-link {
   cursor: pointer;
 }

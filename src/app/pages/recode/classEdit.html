@@ -1,0 +1,38 @@
+<div class="wrapper">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="class">选择入学年份：</label>
+            <select type="text" class="form-control" ng-model="time" ng-options="time.name for time in times" ng-required="true">
+                <option value="">请选择入学年份</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="cardId">班级全称：</label>
+            <input type="text" class="form-control" placeholder="请输入班级全称" ng-model='class.name'>
+        </div>
+        <div class="form-group">
+            <label for="input01">班级简称：</label>
+            <input type="text" class="form-control" placeholder="请输入班级简称" ng-model="class.code" >
+        </div>
+        <div class="form-group">
+            <label for="email">班级信息描述：</label>
+            <textarea placeholder="请输入内容" class="form-control" ng-model="class.remarks"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="period">班级负责人：</label>
+            <input type="text" class="form-control"  placeholder="请输入负责人" ng-model="class.master">
+        </div>
+        <div class="form-group">
+            <label for="message">负责人邮箱：</label>
+            <input type="email" class="form-control" placeholder="请输入Email" ng-model="class.email">
+        </div>
+        <div class="form-group">
+            <label for="input01">负责人电话</label>
+            <input type="text" class="form-control" placeholder="请输入电话" ng-model="class.phone">
+        </div>
+        <footer class="center">
+            <button class="btn btn-danger margin10" ng-click='cancelClassEdit();'>取消</button>
+            <button class="btn btn-primary" ng-click="saveClass()">保存</button>
+        </footer>
+    </form>
+</div>

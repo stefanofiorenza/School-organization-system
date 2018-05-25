@@ -1,0 +1,85 @@
+<div class=" ">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <i class="ion-ios-search-strong"></i>
+                    <span class="box-title">筛选查询</span>
+                </div>
+                <div class="box-body">
+                    <div class="box-content">
+                        <select class="col-md-2 col-sm-4 col-xs-12 select" ng-model="search.plan" placeholder="选择授课计划"></select>
+                        <input type="date" class="col-md-2 col-sm-6 col-xs-12 select" ng-model="search.dataStart" placeholder="开始时间">
+                        <input type="date" class="col-md-2 col-sm-6 col-xs-12 select" ng-model="search.dataEnd" placeholder="结束时间">
+                        <input type="text" class="col-md-2 col-sm-6 col-xs-12 select" ng-model="search.name" placeholder="课程名称/课程关健字">
+                        <button type="button" class="selectBtn" ng-click="getSearch()">查询</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <i class="ion-navicon"></i>
+                    <span class="box-title">数据列表</span>
+                    <button type="button" class="btn btn-primary btn-with-icon" style="margin-left: 20px;" ng-click='classTableCreate();'>新建</button>
+                </div>
+                <div class="box-body">
+                    <div class="box-content">
+                        <table class="table table-bordered table-hover table-condensed" st-table="">
+                            <thead>
+                                <tr class="sortable">
+                                    <th class="table-id" st-sort="id" st-sort-default="true">序号</th>
+                                    <th st-sort="createDate">所属授课计划</th>
+                                    <th st-sort="name">课程名称</th>
+                                    <th st-sort="primaryPerson">授课老师</th>
+                                    <th st-sort="plandateSta">授课日期</th>
+                                    <th st-sort="address">授课地点</th>
+                                    <th st-sort="studentpeople">学生人数</th>
+                                    <th st-sort="plandateEnd">课程表状态</th>
+                                    <th st-sort="edit">操作</th>
+                                </tr>
+                                <!-- <tr>
+                                                    <th></th>
+                                                    <th><input st-search="firstName" placeholder="Search First Name" class="input-sm form-control search-input" type="search" /></th>
+                                                    <th><input st-search="lastName" placeholder="Search Last Name" class="input-sm form-control search-input" type="search" /></th>
+                                                    <th><input st-search="username" placeholder="Search Username" class="input-sm form-control search-input" type="search" /></th>
+                                                    <th><input st-search="email" placeholder="Search Email" class="input-sm form-control search-input" type="search" />
+                                                    </th>
+                                                    <th><input st-search="age" placeholder="Search Age" class="input-sm form-control search-input" type="search" />
+                                                    </th>
+                                                </tr> -->
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in classTables">
+                                    <td class="table-id">{{$index+1}}</td>
+                                    <td>{{item.teachingPlanName}}</td>
+                                    <td>{{item.courseName}}</td>
+                                    <td>{{item.teacherName }}</td>
+                                    <td>
+                                        <span ng-show="item.startDate">开始：{{item.startDate | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+                                        <span ng-show="item.endDate">结束：{{item.endDate | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+
+                                    </td>
+                                    <td>{{item.place }}</td>
+                                    <td>{{item.studentCount}}</td>
+                                    <td>{{item.state}}</td>
+                                    <td>
+                                        <a class="emial-link" style="cursor: pointer;" ng-click="classTableEdit(item.id)">查看课程表细节</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <!-- <tfoot>
+                                                <tr>
+                                                    <td colspan="6" class="text-center">
+                                                        <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+                                                    </td>
+                                                </tr>
+                                            </tfoot> -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>

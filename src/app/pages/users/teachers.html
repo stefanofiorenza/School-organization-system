@@ -1,0 +1,69 @@
+<div class=" ">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <i class="ion-navicon"></i>
+                    <span class="box-title">数据列表</span>
+                    <button type="button" class="btn btn-primary btn-with-icon" style="margin-left: 20px;" ng-click='teacherCreate();'>新建</button>
+                </div>
+                <div class="box-body">
+                    <div class="box-content">
+                        <table class="table table-bordered table-hover table-condensed" st-table="smartTableData">
+                            <thead>
+                                <tr class="sortable ">
+                                    <th class="table-id" st-sort="number" st-sort-default="true">编号</th>
+                                    <th st-sort="group">调研组</th>
+                                    <th st-sort="role">老师职称</th>
+                                    <!-- <th st-sort="scale">老师级别</th> -->
+                                    <th st-sort="name">姓名</th>
+                                    <th st-sort="cardId">身份证号/App账号</th>
+                                    <!-- <th st-sort="card"></th> -->
+                                    <!-- <th st-sort="password">App密码</th> -->
+                                    <th st-sort="tel">联系方式</th>
+                                    <th st-sort="status">状态</th>
+                                    <th st-sort="submit">操作</th>
+                                </tr>
+                                <!-- <tr>
+                                                    <th></th>
+                                                    <th><input st-search="firstName" placeholder="Search First Name" class="input-sm form-control search-input" type="search" /></th>
+                                                    <th><input st-search="lastName" placeholder="Search Last Name" class="input-sm form-control search-input" type="search" /></th>
+                                                    <th><input st-search="username" placeholder="Search Username" class="input-sm form-control search-input" type="search" /></th>
+                                                    <th><input st-search="email" placeholder="Search Email" class="input-sm form-control search-input" type="search" />
+                                                    </th>
+                                                    <th><input st-search="age" placeholder="Search Age" class="input-sm form-control search-input" type="search" />
+                                                    </th>
+                                                </tr> -->
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in teachers">
+                                    <td class="table-id">{{$index+1}}</td>
+                                    <td>{{item.officeName }}</td>
+                                    <td>{{item.titleName }}</td>
+                                    <!-- <td>{{item.username}}</td> -->
+                                    <td>{{item.name }}</td>
+                                    <td>{{item.loginName }}</td>
+                                    <!-- <td>{{item.}}</td> -->
+                                    <!-- <td>{{item.username}}</td> -->
+                                    <td>
+                                        <a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a>
+                                    </td>
+                                    <td e-ng-options="s.value as s.text for s in statuses">{{ showStatus(item) }}</td>
+                                    <!-- <td>{{item.loginFlag}}</td> -->
+                                    <td>
+                                        <a class="emial-link" style="cursor: pointer;" ng-click="teacherEdit(item.id)">老师用户细节</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <!-- <tfoot>
+                                                <tr>
+                                                    <td colspan="6" class="text-center">
+                                                        <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+                                                    </td>
+                                                </tr>
+                                            </tfoot> -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>

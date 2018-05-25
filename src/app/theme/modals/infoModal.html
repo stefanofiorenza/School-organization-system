@@ -1,0 +1,12 @@
+<div class="modal-content" ng-controller="infoControl">
+    <div class="modal-header bg-info">
+        <i class="ion-information-circled modal-icon"></i>
+        <span> Information</span>
+    </div>
+    <div class="modal-body text-center">
+        <input ng-model="name" class="form-control" placeholder="请输入目录名称" ng-blur="save()">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-info" ng-click="$dismiss()">确认</button>
+    </div>
+</div>

@@ -1,0 +1,90 @@
+<div class="">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <i class="ion-ios-search-strong"></i>
+                    <span class="box-title">筛选查询</span>
+                </div>
+                <div class="box-body">
+                    <div class="box-content">
+                        <input type="date" class="col-md-4 col-sm-8 col-xs-12 select" ng-model="search.date" placeholder="查找年份">
+                        <input type="text" class="col-md-4 col-sm-8 col-xs-12 select" ng-model="search.name" placeholder="学生身份证号/姓名">
+                        <button type="button" class="selectBtn" ng-click="getSearch()">查询</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <i class="ion-navicon"></i>
+                    <span class="box-title">数据列表</span>
+                    <button type="button" class="btn btn-primary btn-with-icon" style="margin-left: 20px;" ng-click='studentCreate();'>新建</button>
+                </div>
+                <div class="box-body">
+                    <div class="box-content">
+                        <table class="table table-bordered table-hover table-condensed" st-table="smartTableData">
+                            <thead>
+                                <tr class="sortable">
+                                    <th class="table-id" st-sort="number" st-sort-default="true">编号</th>
+                                    <th st-sort="class">所属班级</th>
+                                    <th st-sort="name">姓名</th>
+                                    <th st-sort="cardId">身份证号</th>
+                                    <th st-sort="addTime">添加时间</th>
+                                    <th st-sort="tel">联系方式</th>
+                                    <!-- <th st-sort="password">密码</th> -->
+                                    <th st-sort="status">状态</th>
+                                    <th st-sort="submit">操作</th>
+                                </tr>
+                                <!-- <tr>
+                                                <th></th>
+                                                <th><input st-search="firstName" placeholder="Search First Name" class="input-sm form-control search-input" type="search" /></th>
+                                                <th><input st-search="lastName" placeholder="Search Last Name" class="input-sm form-control search-input" type="search" /></th>
+                                                <th><input st-search="username" placeholder="Search Username" class="input-sm form-control search-input" type="search" /></th>
+                                                <th><input st-search="email" placeholder="Search Email" class="input-sm form-control search-input" type="search" />
+                                                </th>
+                                                <th><input st-search="age" placeholder="Search Age" class="input-sm form-control search-input" type="search" />
+                                                </th>
+                                            </tr> -->
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in students">
+                                    <td class="table-id">{{$index+1}}</td>
+                                    <td>{{item.officeName}}</td>
+                                    <td>{{item.name}}</td>
+                                    <td>{{item.loginName}}</td>
+                                    <td>{{item.createDate}}</td>
+                                    <td>{{item.phone}}</td>
+                                    <!-- <td>{{item.newPassword}}</td> -->
+                                    <td e-ng-options="s.value as s.text for s in statuses">{{ showStatus(item) }}</td>
+                                    <td>
+                                        <a class="emial-link" style="cursor: pointer;" ng-click="studendEdit(item.id)">学生用户细节</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                            <!-- <tfoot>
+                                            <tr>
+                                                <td colspan="6" class="text-center">
+                                                    <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+                                                </td>
+                                            </tr>
+                                        </tfoot> -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="form-group select-page-size-wrap ">
+             <label>Rows on page
+                    <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+                            ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+                    </select>
+                  </label> 
+            
+        </div> -->
+
+</div>

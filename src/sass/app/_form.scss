@@ -1,3 +1,47 @@
+.wrapper {
+  // margin-left: -40px;
+  // margin-right: -18px;
+  background: #243244;
+  border-radius: 6px;
+  padding: 12px;
+  .box-header {
+    border-bottom: 1px solid #424F60;
+    padding-bottom: 8px;
+    color: #fff;
+  }
+  .form-horizontal {
+    padding-left: 8px;
+    padding-right: 8px;
+    label {
+      color: #bdbaba;
+    }
+    .form-group {
+      margin-left: 0;
+      margin-right: 0;
+      .form-control {
+        background: #10161e;
+        opacity: 0.2;
+        border-radius: 4px;
+        border: none;
+        margin-right: 15px;
+        margin-left: 15px;
+        color: #fff;
+      }
+      input.form-control {
+        height: 28px;
+        line-height: 28px;
+      }
+      .col-xs-4 {
+        padding-left: 0;
+      }
+      .searchBtn{
+        height:28px;
+        line-height: 16px;
+      }
+    }
+  }
+}
+
 .label {
   border-radius: 0;
 }
@@ -70,12 +114,10 @@ textarea.form-control {
       margin-right: 12px;
     }
   }
-
   button[type="submit"] {
     margin-left: 12px;
   }
-
-  label.custom-checkbox > span {
+  label.custom-checkbox>span {
     display: block;
     margin-top: -13px;
     margin-right: 10px;
@@ -123,7 +165,6 @@ textarea.form-control {
     overflow: hidden;
     border-radius: 6px;
     box-sizing: border-box;
-
     /* this fixes the overflow:hidden in Chrome */
     -webkit-transform: translateZ(0);
     /* Hide default HTML checkbox */
@@ -151,15 +192,13 @@ textarea.form-control {
       }
     }
   }
-  input:checked + .switcher {
+  input:checked+.switcher {
     border: solid 1px $border;
     .handle-container {
       transform: translate3d(0, 0, 0);
     }
   }
-
 }
-
 
 .switch-container {
   display: inline-block;
@@ -226,11 +265,9 @@ textarea.form-control {
   .bootstrap-switch-handle-off {
     border-radius: 0;
   }
-
   .bootstrap-switch-label {
     background: transparent;
   }
-
   &.bootstrap-switch-animate .bootstrap-switch-container {
     transition: margin-left .2s;
   }
@@ -249,7 +286,7 @@ textarea.form-control {
 .input-group {
   width: 100%;
   margin-bottom: 15px;
-  & > span {
+  &>span {
     border-radius: 0;
   }
 }
@@ -258,13 +295,13 @@ label.custom-checkbox {
   padding-right: 0;
   padding-left: 0;
   margin-bottom: 0;
-  & > input {
+  &>input {
     height: 0;
     z-index: -100 !important;
     opacity: 0;
     position: absolute;
     &:checked {
-      & + span {
+      &+span {
         &:before {
           content: "\f00c";
           font-weight: $font-light;
@@ -272,7 +309,7 @@ label.custom-checkbox {
       }
     }
     &:disabled {
-      & + span {
+      &+span {
         color: $disabled;
         cursor: not-allowed;
         &:before {
@@ -282,7 +319,7 @@ label.custom-checkbox {
       }
     }
   }
-  & > span {
+  &>span {
     position: relative;
     display: inline-block;
     margin: 0;
@@ -332,16 +369,16 @@ label.custom-checkbox {
 
 label.custom-radio {
   @extend .custom-checkbox;
-  & > input {
+  &>input {
     &:checked {
-      & + span {
+      &+span {
         &:before {
           content: "\f111";
         }
       }
     }
   }
-  & > span {
+  &>span {
     &:before {
       border-radius: 16px;
       font-size: 9px;
@@ -350,7 +387,7 @@ label.custom-radio {
 }
 
 @mixin customInput($color) {
-  & > span {
+  &>span {
     &:before {
       color: $color;
     }
@@ -379,7 +416,10 @@ label.custom-input-danger {
 }
 
 .form-horizontal {
-  .radio, .checkbox, .radio-inline, .checkbox-inline {
+  .radio,
+  .checkbox,
+  .radio-inline,
+  .checkbox-inline {
     padding-top: 0px;
   }
 }
@@ -399,10 +439,9 @@ label.custom-input-danger {
       border-color: $focusColor;
     }
   }
-
   label.custom-checkbox {
     color: $color;
-    & > span {
+    &>span {
       &:before {
         color: $color;
       }
@@ -434,7 +473,7 @@ label.custom-input-danger {
   @include validationState($danger-bg, $danger);
 }
 
-.has-feedback label ~ .form-control-feedback {
+.has-feedback label~.form-control-feedback {
   top: 21px;
   font-size: 18px;
 }
@@ -445,17 +484,25 @@ label.custom-input-danger {
       color: $default-text;
     }
   }
-  > .dropdown-toggle {
-    &.btn-primary, &.btn-warning, &.btn-danger, &.btn-success, &.btn-inverse, &.btn-info {
+  >.dropdown-toggle {
+    &.btn-primary,
+    &.btn-warning,
+    &.btn-danger,
+    &.btn-success,
+    &.btn-inverse,
+    &.btn-info {
       color: #fff;
-      &:hover, &:focus {
+      &:hover,
+      &:focus {
         color: #fff;
       }
     }
   }
 }
 
-.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+.form-control[disabled],
+.form-control[readonly],
+fieldset[disabled] .form-control {
   background-color: $input-background;
   color: $disabled;
   border-color: $disabled-bg;
@@ -522,12 +569,12 @@ label.custom-input-danger {
     }
   }
   &.open {
-    > .btn.btn-default.dropdown-toggle {
+    >.btn.btn-default.dropdown-toggle {
       background: $default;
       box-shadow: none;
       border-color: $border;
     }
-    > .btn {
+    >.btn {
       border-radius: 5px 5px 0 0;
     }
     .dropdown-menu.open {
@@ -536,7 +583,7 @@ label.custom-input-danger {
       border-radius: 0 0 5px 5px;
     }
   }
-  &.with-search.open .btn-default + .dropdown-menu {
+  &.with-search.open .btn-default+.dropdown-menu {
     .bs-searchbox .form-control {
       background-color: $default;
       border: 1px solid $input-border;
@@ -585,7 +632,6 @@ label.custom-input-danger {
 }
 
 .ui-select-multiple.ui-select-bootstrap {
-
   min-height: 34px;
   padding: 4px 3px 0 12px;
 }
@@ -614,12 +660,12 @@ label.custom-input-danger {
   border: none;
 }
 
-.input-group > span.addon-left {
+.input-group>span.addon-left {
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
 }
 
-.input-group > span.addon-right {
+.input-group>span.addon-right {
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -643,4 +689,3 @@ label.custom-input-danger {
 .sub-little-text {
   font-size: 12px;
 }
-
